@@ -21,5 +21,5 @@ class CoinConverter:
         except ValueError:
             raise APIException(f'Не удалось обработать количество {amount}.')
         r = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={quote_ticker}&tsyms={base_ticker}')
-        total_base = json.loads(r.content)[keys[base]]
-        return total_base
+        price = amount * total_base
+        return price
